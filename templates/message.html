@@ -1,0 +1,47 @@
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+
+<header class="masthead" style="background-image: url({{ url_for('static', filename='img/about-bg.jpg')}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1> All messages </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+<div class="col-lg-8 col-md-10 mx-auto">
+
+{% for message in messages: %}
+              <ul class="commentList">
+                <li>
+                    <div class="commenterImage">
+                        <img src="{{ message.email | gravatar }}"/>
+                    </div>
+                    <div class="commentText">
+                      {{message.message|safe}}
+
+                      <p> {{message.name}} </p>
+                        <p> Email: {{message.email}}</p>
+                        <p>Phone: {{message.phone}}</p>
+
+                    </div>
+                </li>
+              </ul>
+    <br>
+            {% endfor %}
+
+            </div>
+
+
+          </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+{% include "footer.html" %}
