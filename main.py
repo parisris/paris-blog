@@ -59,7 +59,7 @@ class User(UserMixin, db.Model):
     # The "author" refers to the author property in the BlogPost class.
     posts = relationship("BlogPost", back_populates="author")
     comments = relationship("Comment", back_populates="comment_author")
-db.create_all()
+# db.create_all()
 
 class BlogPost(db.Model):
     __tablename__ = "blog_posts"
@@ -76,7 +76,7 @@ class BlogPost(db.Model):
     body = db.Column(db.Text, nullable=False)
     img_url = db.Column(db.String(250), nullable=False)
     comments = relationship("Comment", back_populates="parent_post")
-db.create_all()
+# db.create_all()
 
 
 class Comment(db.Model):
@@ -87,7 +87,7 @@ class Comment(db.Model):
     parent_post = relationship("BlogPost", back_populates="comments")
     comment_author = relationship("User", back_populates="comments")
     text = db.Column(db.Text, nullable=False)
-db.create_all()
+# db.create_all()
 
 
 class Message(db.Model):
@@ -97,7 +97,7 @@ class Message(db.Model):
     email = db.Column(db.String(250), nullable=False)
     message = db.Column(db.Text, nullable=False)
     phone = db.Column(db.String(20), nullable=False)
-db.create_all()
+# db.create_all()
 
 
 ## admin-only decorator
