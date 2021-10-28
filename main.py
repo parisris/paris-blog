@@ -110,6 +110,7 @@ def admin_only(f):
     return decorated_function
 
 
+
 @app.route('/')
 def get_all_posts():
     posts = BlogPost.query.all()
